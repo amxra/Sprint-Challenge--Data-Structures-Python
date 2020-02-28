@@ -1,3 +1,41 @@
+class BinarySearchTree:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if value < self.value:
+            if not self.left:
+                node = BinarySearchTree(value)
+                self.left = node
+            else:
+                self.left.insert(value)
+
+        if value >= self.value:
+            if not self.right:
+                node = BinarySearchTree(value)
+                self.right = node
+            else:
+                self.right.insert(value)
+
+    def contains(self, target):
+        if self.value == target:
+            return True
+
+        if target < self.value:
+            if not self.left:
+                return False
+            return self.left.contains(target)
+
+        if target > self.value:
+            if not self.right:
+                return False
+            return self.right.contains(target)
+
+
+
+
 import time
 
 start_time = time.time()
